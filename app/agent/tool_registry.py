@@ -2,6 +2,7 @@ from app.tools.ec2_tool import get_ec2_instances
 from app.tools.s3_tool import get_s3_buckets
 from app.tools.iam_tool import get_iam_users
 from app.tools.cost_explorer_tool import get_monthly_cost 
+from app.tools.cost_explorer_tool import get_daily_cost_trend
 
 
 TOOLS = {
@@ -45,7 +46,8 @@ TOOLS = {
         "billing",
         "price"
     ],
-    "function": get_monthly_cost
+    "function": get_daily_cost_trend
 }
+
 
 }
