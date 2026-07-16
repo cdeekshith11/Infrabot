@@ -3,9 +3,23 @@ from app.tools.s3_tool import get_s3_buckets
 from app.tools.iam_tool import get_iam_users
 from app.tools.cost_explorer_tool import get_monthly_cost 
 from app.tools.cost_explorer_tool import get_daily_cost_trend
+from app.orchestrator.ec2_health_orchestrator import (
+    ec2_health_orchestrator
+)
 
 
 TOOLS = {
+    "ec2_health": {
+    "name": "EC2 Health",
+    "description": "Analyze EC2 CPU utilization",
+    "keywords": [
+        "underutilized",
+        "cpu",
+        "utilization",
+        "health"
+    ],
+    "function": ec2_health_orchestrator.analyze
+},
 
     "ec2": {
         "name": "EC2",

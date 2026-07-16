@@ -28,6 +28,19 @@ class AgentRouter:
 
         if not context:
             return "Sorry, I don't know how to answer that yet."
+        
+
+        # Check if any tool returned "no instances"
+        for result in context.values():
+          
+           if (
+              isinstance(result, dict)
+                and result.get("status") == "no_instances"
+                          ):
+
+             logger.warning("Skipping Bedrock")
+
+             return result["message"]
 
         logger.info("Sending context to Bedrock")
 
