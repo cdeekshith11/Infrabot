@@ -11,7 +11,6 @@ class BedrockService:
     def generate_response(self, question, aws_data):
 
         prompt = f"""
-You are InfraBot, an AI CloudOps Assistant.
 
 User Question:
 {question}
@@ -19,30 +18,30 @@ User Question:
 AWS Data:
 {json.dumps(aws_data, indent=2)}
 
-Provide a clear and concise answer.
 """
 
-        response = self.client.invoke_model(
+        response = self.client.converse(
             modelId="amazon.nova-lite-v1:0",
-            body=json.dumps({
-                "messages": [
+
+            system=[
+                {
+                    "text":"You are InfraBot, an AI CloudOps Assistant. Answer clearly and concisely."
+                }
+            ],
+
+            messages=[{
+                "role":"user",
+                "content":[
                     {
-                        "role": "user",
-                        "content": [
-                            {
-                                "text": prompt
-                            }
-                        ]
+                        "text":prompt
                     }
                 ]
-            })
+            }]
+            
         )
 
-        result = json.loads(
-            response["body"].read()
-        )
 
-        answer = result["output"]["message"]["content"][0]["text"]
+        answer = response["output"]["message"]["content"][0]["text"]
 
         return answer
 
