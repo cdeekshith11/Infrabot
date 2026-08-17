@@ -198,7 +198,7 @@ List S3 buckets
 ## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/InfraBot.git
+git clone https://github.com/cdeekshith11/InfraBot.git
 
 cd InfraBot
 ```
@@ -259,13 +259,10 @@ uvicorn app.main:app --reload
 
 # 📸 Screenshots
 
-Add screenshots of
 
 - Swagger UI
-- EC2 API Response
-- CloudWatch Response
-- Cost Explorer Response
-- Folder Structure
+- <img width="1334" height="662" alt="image" src="https://github.com/user-attachments/assets/f87575ae-9778-456f-947a-a4b44d3b1210" />
+
 
 ---
 
